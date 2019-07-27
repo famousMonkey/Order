@@ -1,0 +1,37 @@
+minidolphin:
+  base:
+#    host: 10.198.1.200
+    host: 172.31.242.32
+  eureka:
+    username: meatball
+    password: Yy123...
+info:
+  mini-dolphin-special-offer-server:
+    name: 订单管理系统
+    encoding: UTF-8
+server:
+  port: 8187
+spring:
+  application:
+    name: mini-dolphin-order-server
+  cloud:
+    config:
+      # 注意：开启此项后服务注册中心配置必须配置在此配置文件里，否则会报错
+      discovery:
+        enabled: true
+        service-id: mini-dolphin-config-server
+#      profile: dev
+#      label: master
+      profile: dev
+      label: dev
+  datasource:
+    url: jdbc:mysql://${minidolphin.datasource.host}:${minidolphin.datasource.port}/mini_dolphin_order_server?useUnicode=true&characterEncoding=utf8&useSSL=false
+transaction:
+  rollback-on-commit-failure: true
+# 服务注册中心
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${minidolphin.eureka.username}:${minidolphin.eureka.password}@${minidolphin.base.host}:8761/eureka/
+  instance:
+    prefer-ip-address: true

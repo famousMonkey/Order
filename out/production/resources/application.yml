@@ -1,0 +1,37 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: mini-dolphin-order-server
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    maxIdle: 10
+    maxWait: 10000
+    minIdle: 5
+    initialSize: 5
+    validation-query: SELECT 1
+    test-on-borrow: false
+    test-while-idle: true
+    time-between-eviction-runs-millis: 18000
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.3.200:3306/mini-dolphin-order-server?useUnicode=true&characterEncoding=utf8&useSSL=false&oldsyntax=true
+    username: root
+    password: Yy123...
+    hikari:
+      validation-timeout: 18000
+      connection-timeout: 6000
+  transaction:
+    rollback-on-commit-failure: true
+# 注册为服务提供者
+eureka:
+  client:
+    service-url:
+      defaultZone: http://meatball:Yy123...@192.168.3.200:8761/eureka
+  instance:
+    prefer-ip-address: true
+ribbon:
+  eager-load:
+    enabled: true

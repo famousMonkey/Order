@@ -1,0 +1,7 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+rootProject.name = 'mini-dolphin-order-server'
+includeFlat 'mini-dolphin-common'
